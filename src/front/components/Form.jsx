@@ -57,7 +57,7 @@ export const Form = () => {
           <label htmlFor="exampleFormControlTextarea1" className="form-label">Password</label>
           <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" className="form-control" id="exampleFormControlTextarea1" />
         </div>
-        <button type="submit" className="btn btn-primary">Login</button>
+        <button type="submit" className="btn btn-primary mb-2">Login</button>
       </form>
       <p>You don't have an account? <Link to="/signup">Signup</Link></p>
     </div>
