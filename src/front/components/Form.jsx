@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import useGlobalReducer from "../hooks/useGlobalReducer";
 import Swal from "sweetalert2";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const Form = () => {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const navigate = useNavigate()
 
   const { store, dispatch } = useGlobalReducer()
 
@@ -32,8 +33,15 @@ export const Form = () => {
           })
         }
         return response.json().then(data => {
-          if (data.acces_token) {
+          if (data.access_token) {
             localStorage.setItem("token", data.access_token)
+            Swal.fire({
+              title: "Welcome",
+              text: "Enjoy our app",
+              icon: "success"
+            }).then(()=>{
+              navigate("/private")
+            })
           } else if (data.msg) {
             Swal.fire({
               title: "Error",

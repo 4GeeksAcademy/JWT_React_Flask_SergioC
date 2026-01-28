@@ -8,6 +8,8 @@ export const Navbar = () => {
 
   const navigate = useNavigate()
 
+  const token = localStorage.getItem("token")
+
   function logout() {
     dispatch({
       type: "set_auth",
@@ -23,7 +25,7 @@ export const Navbar = () => {
         <Link to="/">
           <span className="navbar-brand mb-0 h1">React Boilerplate</span>
         </Link>
-        {store.auth ? <button className="btn btn-primary" onClick={logout}>Logout</button> : null}
+        {token ? <button className="btn btn-primary" onClick={logout}>Logout</button> : null}
         <div className="ml-auto">
           <Link to="/demo">
             <button className="btn btn-primary">Check the Context in action</button>
